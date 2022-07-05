@@ -1,25 +1,16 @@
 import { Layout, Menu, Row, Col, Divider, Avatar, Badge } from "antd";
-import SubHeader from "./SubHeader";
+import SubHeader from "../components/SubHeader";
 import React from "react";
-import {
-  ContactsFilled,
-  WechatFilled,
-  HomeFilled,
-  GitlabFilled,
-  SignalFilled,
-  ContainerOutlined,
-} from "@ant-design/icons";
+import { GitlabFilled, ContainerOutlined } from "@ant-design/icons";
 import navBarField from "../constant/navBarField";
+import TeamContent from "../components/TeamContent";
+import ActivityContent from "../components/ActivityContent";
 
-const NavBar = () => {
+const Main = () => {
   const { Header, Sider, Content } = Layout;
   return (
     <Layout>
-      <Sider
-        style={{ height: "100vh", color: "#042235" }}
-        width={80}
-        trigger={false}
-      >
+      <Sider style={{ color: "#042235" }} width={80} trigger={false}>
         <div style={{ textAlign: "center", padding: 10 }}>
           <GitlabFilled style={{ color: "white", fontSize: 25 }}></GitlabFilled>
         </div>
@@ -49,8 +40,14 @@ const NavBar = () => {
               <p style={{ color: "grey" }}>NARWHAL</p>
             </Col>
             <Divider type="vertical" style={{ height: "64px" }} />
-            <Col flex={1}>
-              <p>Teams</p>
+            <Col
+              flex={1}
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+              }}
+            >
+              <h3>Teams</h3>
             </Col>
             <Col
               flex={3}
@@ -78,22 +75,19 @@ const NavBar = () => {
             </Col>
           </Row>
         </Header>
-        <Divider style={{margin:0}}></Divider>
-        <SubHeader>
-        </SubHeader>
-        <Content
-          className="site-layout-background"
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-          }}
-        >
-          Content
-        </Content>
+        <Divider style={{ margin: 0 }}></Divider>
+        <SubHeader></SubHeader>
+        <Row>
+          <Col>
+            <TeamContent></TeamContent>
+          </Col>
+          <Col>
+            <ActivityContent></ActivityContent>
+          </Col>
+        </Row>
       </Layout>
     </Layout>
   );
 };
 
-export default NavBar;
+export default Main;
