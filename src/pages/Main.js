@@ -1,6 +1,7 @@
 import { Layout, Menu, Row, Col, Divider, Avatar, Badge } from "antd";
 import SubHeader from "../components/SubHeader";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { GitlabFilled, ContainerOutlined } from "@ant-design/icons";
 import navBarField from "../constant/navBarField";
 import TeamContent from "../components/TeamContent";
@@ -8,6 +9,22 @@ import ActivityContent from "../components/ActivityContent";
 
 const Main = () => {
   const { Header, Sider } = Layout;
+  const [currentUser, setCurrentUser] = useState({})
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url =
+          "https://sunnyside88.github.io/sample-json/data/sample.json";
+        let res = await axios.get(url);
+        setCurrentUser(res.data.current_user);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <Layout>
       <Sider style={{ color: "#042235" }} width={80} trigger={false}>
@@ -59,17 +76,17 @@ const Main = () => {
               }}
             >
               <div style={{ paddingRight: 10 }}>
-                <Badge size="small" count={3}>
+                <Badge size="small" count={currentUser.notifications_count}>
                   <ContainerOutlined style={{ fontSize: 16 }} />
                 </Badge>
               </div>
               <div style={{ paddingRight: 10 }}>
-                <p>Hello, John</p>
+                <p>Hi, {currentUser.name}</p>
               </div>
               <div>
                 <Avatar
                   size={25}
-                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
+                  src={currentUser.avatar}
                 ></Avatar>
               </div>
             </Col>
