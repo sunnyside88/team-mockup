@@ -45,7 +45,7 @@ const TeamContent = () => {
         title="All Teams"
         extra={<h4>{`Showing ${teams.length} out of ${teams.length}`}</h4>}
         bodyStyle={{ alignItems: "center", justifyContent: "center" }}
-        style={{ width: 1000 }}
+        style={{ width: 800}}
       >
         {teams.map((item, i) => {   
           return (
@@ -123,8 +123,8 @@ const TeamContent = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <MessageFilled style={{ fontSize: 16, paddingTop: 5, paddingRight:5 }} />
-                    <p>{`${item.campaigns_count} Campaigns`}</p>
+                    <MessageFilled style={{ fontSize: 16, paddingRight:5 }} />
+                    <h5>{`${item.campaigns_count} Campaigns`}</h5>
                   </div>
                   <div
                     style={{
@@ -133,8 +133,8 @@ const TeamContent = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <ContactsFilled style={{ fontSize: 16, paddingTop: 5, paddingRight:5}} />
-                    <p>{`${item.leads_count} Leads`}</p>
+                    <ContactsFilled style={{ fontSize: 16, paddingRight:5}} />
+                    <h5>{`${item.leads_count} Leads`}</h5>
                   </div>
                 </div>
               </div>
