@@ -7,7 +7,7 @@ import TeamContent from "../components/TeamContent";
 import ActivityContent from "../components/ActivityContent";
 
 const Main = () => {
-  const { Header, Sider, Content } = Layout;
+  const { Header, Sider } = Layout;
   return (
     <Layout>
       <Sider style={{ color: "#042235" }} width={80} trigger={false}>

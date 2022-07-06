@@ -1,10 +1,4 @@
 import { Menu } from "antd";
-import {
-  HomeOutlined,
-  ToolOutlined,
-  BulbOutlined,
-  MessageOutlined,
-} from "@ant-design/icons";
 
 const MenuBar = () => {
   return (

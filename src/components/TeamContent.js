@@ -7,7 +7,6 @@ import {
   MessageFilled,
   ContactsFilled,
 } from "@ant-design/icons";
-const dJSON = require("dirty-json");
 
 const TeamContent = () => {
   const { Content } = Layout;
