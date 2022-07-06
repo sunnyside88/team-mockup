@@ -48,7 +48,7 @@ const TeamContent = () => {
         bodyStyle={{ alignItems: "center", justifyContent: "center" }}
         style={{ width: 1000 }}
       >
-        {teams.map((item, i) => {
+        {teams.map((item, i) => {   
           return (
             <Card.Grid style={gridStyle}>
               <div
