@@ -5,11 +5,32 @@ import axios from "axios";
 const ActivityContent = () => {
   const { Content } = Layout;
   const [activity, setActivity] = useState([]);
-//   const keys = {
-//     increased_quota:"'s",
-//     added_leads:'to',
-//     archived_team:'the',
-//   }
+
+  const stringFormatter = (item) => {
+    if (item.action === "increased_quota") {
+      return (
+        <p>
+          <b>{item.person.name} </b>incresed <b>{`${item.target}`}</b>'s quota'
+          <h5>{item.created_at}</h5>
+        </p>
+      );
+    } else if (item.action === "added_leads") {
+      return (
+        <p>
+          <b>{item.person.name} </b>added new leads to <b>{`${item.target}`}</b>
+          <h5>{item.created_at}</h5>
+        </p>
+      );
+    } else if (item.action === "archived_team") {
+      return (
+        <p>
+          <b>{item.person.name} </b>archieved the team <b>{`${item.target}`}</b>
+          <h5>{item.created_at}</h5>
+        </p>
+      );
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,22 +62,21 @@ const ActivityContent = () => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           {activity.map((item, i) => {
             return (
-              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div style={{ display: "flex", flexDirection: "row"}}>
                 <Avatar
                   shape="round"
                   src={item.person.avatar}
                   size={50}
+                  style={{marginRight:10}}
                 ></Avatar>
-                <div>
-                    <p><b>{item.person.name}</b> {item.action.split('_')[0]} <b>{item.target}</b></p>
-                </div>
+                <div>{stringFormatter(item)}</div>
               </div>
             );
           })}
         </div>
       </Card>
     </Content>
-  );    
+  );
 };
 
 export default ActivityContent;
